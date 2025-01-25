@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,7 +7,79 @@
     <title>Vite + React</title>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <!-- <div id="root"></div> -->
+
+    <div>
+      <form id="hey">
+        <input
+          id="employee-name"
+          type="text"
+          placeholder="Employee Name"
+          required
+        />
+        <input
+          id="employee-age"
+          type="number"
+          placeholder="Employee Age"
+          required
+        />
+        <input
+          id="employee-position"
+          type="text"
+          placeholder="Employee Position"
+          required
+        />
+        <button id="btn" type="submit">Add Item</button>
+      </form>
+    </div>
+    <div id="main"></div>
+    <!-- <script type="module" src="/src/main.jsx"></script> -->
   </body>
+  <script>
+    const mainContainer = document.getElementById("main");
+    const formData = document.getElementById("hey");
+    const employeeName = document.getElementById("employee-name");
+    const employeeAge = document.getElementById("employee-age");
+    const employeePosition = document.getElementById("employee-position");
+    const btn = document.getElementById("btn");
+
+    // handleEvents
+    function handleSubmit(e) {
+      e.preventDefault();
+
+      mainContainer.innerHTML += `<table>
+        <thead>
+          <tr>
+            <th>name</th>
+            <th>age</th>
+            <th>position</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="data">
+            <td>${employeeName.value}</td>
+            <td>${employeeAge.value}</td>
+            <td>${employeePosition.value}</td>
+            <td id="edit" style="cursor:pointer; background:green; color:white; padding:10px;">Edit</td>
+            <td id="delete" style="cursor:pointer; background:red; color:white; padding:10px;">Delete</td>
+          </tr>
+        </tbody>
+      </table>`;
+      const edit = document.getElementById("edit");
+      const deleteBtn = document.getElementById("delete");
+      const data = document.getElementById("data");
+      function handleEdit(e) {
+        console.log(data)
+        console.log("handleEdit");
+      }
+      function handleDelete(e) {
+        console.log("handleDelete");
+      }
+      edit.addEventListener("click", handleEdit);
+      deleteBtn.addEventListener("click", handleDelete);
+      // mainContainer.append(div)
+    }
+    // events
+    formData.addEventListener("submit", handleSubmit);
+  </script>
 </html>
